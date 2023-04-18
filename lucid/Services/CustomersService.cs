@@ -7,6 +7,7 @@ namespace lucid.Services
 {
     public class CustomersService : ICustomersService
     {
+        // in every service you need to create an instance of the db context and pass it into your contructor
         private readonly AppDbContext _context;
 
         public CustomersService( AppDbContext appDbContext )
@@ -16,7 +17,8 @@ namespace lucid.Services
 
         public void Add( Customer customer )
         {
-            throw new System.NotImplementedException();
+            _context.Customers.Add( customer );
+            _context.SaveChanges();
         }
 
         public void Delete( int id )
