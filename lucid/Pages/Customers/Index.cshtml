@@ -1,0 +1,16 @@
+﻿@using lucid.Models
+
+@model List<Customer>
+
+@{
+    ViewData["Title"] = "List of Customers";
+}
+
+
+ @foreach ( var item in Model )
+{
+    <p>@item.FullName</p>
+    <p>@item.PhoneNumber</p>
+    <p>@item.EmailAddress</p>
+    <p>@item.Street</p>
+}  
