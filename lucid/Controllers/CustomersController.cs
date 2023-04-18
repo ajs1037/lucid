@@ -17,7 +17,7 @@ namespace lucid.Controllers
         {
             // when we have data manipulation we should use asyc
             var data = _service.GetAll();
-            return View();
+            return View(data);
         }
 
         // customers/Create

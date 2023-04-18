@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using lucid.Data;
+using lucid.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,10 @@ namespace lucid
         {
             // db context configuration
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+
+            // services configuration
+            services.AddScoped<ICustomersService, CustomersService>();
+
             services.AddRazorPages();
         }
 
@@ -54,6 +59,13 @@ namespace lucid
             app.UseEndpoints( endpoints =>
             {
                 endpoints.MapRazorPages();
+            } );
+
+            app.UseEndpoints( endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}" );
             } );
         }
     }

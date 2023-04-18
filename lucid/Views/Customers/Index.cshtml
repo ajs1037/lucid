@@ -4,18 +4,8 @@
 
 @{
     ViewData["Title"] = "List of Customers";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
-
-
- @foreach ( var item in Model )
-{
-    <p>@item.FullName</p>
-    <p>@item.PhoneNumber</p>
-    <p>@item.EmailAddress</p>
-    <p>@item.Street</p>
-}  
-
-
 
 @section styles {
     <link rel="stylesheet" href="@ViewData["AssetHost"]/css/customers.css" type="text/css" asp-append-version="true" />
@@ -45,16 +35,20 @@
                     <th></th>
                 </tr>
 
-                <tr>
-                    <td>Adolfo Segura</td>
-                    <td>602-354-1640</td>
-                    <td>adolfosegura@ccv.church</td>
-                    <td>11883 W. Morning Vista Dr.</td>
-                    <td>
-                        <a class="btn btn-green" href="">Edit</a>
-                        <a class="btn btn-red" href="">Delete</a>
-                    </td>
-                </tr>
+                @foreach ( var item in Model )
+                {
+                    <tr>
+                        <td>@item.FullName</td>
+                        <td>@item.PhoneNumber</td>
+                        <td>@item.EmailAddress</td>
+                        <td>@item.Street</td>
+                        <td>
+                            <a class="btn btn-green" href="">Edit</a>
+                            <a class="btn btn-red" href="">Delete</a>
+                        </td>
+                    </tr>
+                } 
+
             </table>
         </div>
     </div>

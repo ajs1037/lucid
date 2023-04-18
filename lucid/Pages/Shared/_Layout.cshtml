@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    @*<link rel="stylesheet" href="~/CustomerManager.styles.css" asp-append-version="true" />*@
     <link rel="stylesheet" type="text/css" href="~/js/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="~/js/slick/slick-theme.css" />
     @RenderSection("styles", false)
@@ -24,9 +23,6 @@
     <!-- Skip main navigation link. Required by Web Content Accessibility Guidelines -->
     <a href="#main"></a>
 
-    <!-- Gloo Tracking Pixel -->
-    <img style="display: none;" src="https://di.rlcdn.com/710152.gif" />
-    <!-- End Gloo Tracking Pixel -->
     <div class="page-background">
         <header id="masthead" class="masthead">
             <div id="zone-announcementbar">
@@ -46,7 +42,7 @@
                                 <button class="navigation-primary-item-button" onclick="return false;">Customers</button>
                                 <div class="navigation-primary-dropdown-content-wrapper">
                                     <div class="navigation-primary-dropdown-content">
-                                        <a class="navigation-primary-item-a dropdown-content-item" href="/Customer/Customers">Customers</a>
+                                        <a class="navigation-primary-item-a dropdown-content-item" href="/Customers">Customers</a>
                                     </div>
                                 </div>
                             </li>
@@ -61,14 +57,6 @@
 
                         </ul>
                     </div>
-
-                    @*<div class="header-navigation header-navigation-right">
-                        <ul class="navigation-primary-items">
-                            <li class="navigation-primary-item ">
-                                <a href="/dashboard" class="btn-my-dashboard navigation-primary-item-a">Login</a>
-                            </li>
-                        </ul>
-                    </div>*@
                 </div>
 
                 <div class="masthead-nav-mobile">
@@ -99,8 +87,6 @@
                                     </ul>
                                 </div>
                             </li>
-
-                            @*<li><a class="btn-my-dashboard navigation-mobile-item btn-mobile-item-toggle" href="/login">Login</a></li>*@
                         </ul>
                     </div>
                 </div>
