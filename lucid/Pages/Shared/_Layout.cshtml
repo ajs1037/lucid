@@ -3,48 +3,129 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - lucid</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">lucid</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - lucid - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+    <title>@ViewData["Title"] - Lucid</title>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/ui-effect-navbar.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("scripts", false)
 
-    @await RenderSectionAsync("Scripts", required: false)
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/CustomerManager.styles.css" asp-append-version="true" />*@
+    <link rel="stylesheet" type="text/css" href="~/js/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/js/slick/slick-theme.css" />
+    @RenderSection("styles", false)
+
+
+</head>
+<body>
+    <!-- Skip main navigation link. Required by Web Content Accessibility Guidelines -->
+    <a href="#main"></a>
+
+    <!-- Gloo Tracking Pixel -->
+    <img style="display: none;" src="https://di.rlcdn.com/710152.gif" />
+    <!-- End Gloo Tracking Pixel -->
+    <div class="page-background">
+        <header id="masthead" class="masthead">
+            <div id="zone-announcementbar">
+                <div class="announcement-bar">
+                    
+                </div>
+            </div>
+            <div class="masthead-upper">
+                <div class="masthead-brand">
+                    <a class="logo" href="/"><span class="sr-only">Logo</span></a>
+                </div>
+                <div class="masthead-nav">
+                    <div class="header-navigation header-navigation-left">
+                        <ul class="navigation-primary-items">
+                            
+                            <li class="navigation-primary-item">
+                                <button class="navigation-primary-item-button" onclick="return false;">Customers</button>
+                                <div class="navigation-primary-dropdown-content-wrapper">
+                                    <div class="navigation-primary-dropdown-content">
+                                        <a class="navigation-primary-item-a dropdown-content-item" href="/Customer/Customers">Customers</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="navigation-primary-item">
+                                <a class="navigation-primary-item-button" href="/search">Calendar</a>
+                            </li>
+
+                            <li class="navigation-primary-item">
+                                <a class="navigation-primary-item-button" href="/Admin/AddCustomer">Add Customer</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    @*<div class="header-navigation header-navigation-right">
+                        <ul class="navigation-primary-items">
+                            <li class="navigation-primary-item ">
+                                <a href="/dashboard" class="btn-my-dashboard navigation-primary-item-a">Login</a>
+                            </li>
+                        </ul>
+                    </div>*@
+                </div>
+
+                <div class="masthead-nav-mobile">
+                    <img class="btn-mobile-bars" src="@ViewData["AssetHost"]/images/icon/menu-white.png" onclick="toggleMobileFullMenu(true);" asp-append-version="true" alt="Mobile Menu Bars" />
+                    <div class="masthead-fullmenu offscreen">
+                        <div class="navigation-mobile-title">
+                            <div class="navigation-mobile-title-search-wrapper">
+                                Menu
+                                <a class="navigation-mobile-magnify" href="/search"><img src="@ViewData["AssetHost"]/images/icon/magnify-white.png" alt="Search ccv" asp-append-version="true" /></a>
+                            </div>
+                            <img class="btn-mobile-close" src="@ViewData["AssetHost"]/images/icon/close-white.png" onclick="toggleMobileFullMenu(false);" asp-append-version="true" alt="Close" aria-label="Close">
+                        </div>
+                        <ul class="navigation-mobile-items">
+                            <li>
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle navigation-mobile-item btn-mobile-item-toggle" type="button" data-toggle="dropdown" style="border: 0px;">Customers<img src="@ViewData["AssetHost"]/images/icon/chevron-down-black.png" asp-append-version="true" alt="expand" /></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="navigation-mobile-item" href="/customers">Customers</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle navigation-mobile-item btn-mobile-item-toggle" type="button" data-toggle="dropdown" style="border: 0px;">Calendar<img src="@ViewData["AssetHost"]/images/icon/chevron-down-black.png" asp-append-version="true" alt="expand" /></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="navigation-mobile-item" href="/experience">Calendar</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            @*<li><a class="btn-my-dashboard navigation-mobile-item btn-mobile-item-toggle" href="/login">Login</a></li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main role="main">
+            @RenderBody()
+        </main>
+
+        <a class="anchor" id="main"></a>
+
+        <footer class="footer">
+            <div class="footer-logo">
+                <!--<img src="@ViewData["AssetHost"]/images/logo/ccv-white.svg" height="35" width="100" asp-append-version="true" alt="CCV Logo">-->
+                <span class="footer-copyright"><i class="fa fa-copyright"></i></span>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-links-section">
+
+                </div>
+            </div>
+        </footer>
+
+    </div>
 </body>
 </html>

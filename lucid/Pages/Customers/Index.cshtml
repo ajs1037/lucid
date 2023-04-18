@@ -14,3 +14,58 @@
     <p>@item.EmailAddress</p>
     <p>@item.Street</p>
 }  
+
+
+
+@section styles {
+    <link rel="stylesheet" href="@ViewData["AssetHost"]/css/customers.css" type="text/css" asp-append-version="true" />
+}
+
+<section id="hero" class="main-feature">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h1>Customer List</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="info-section light-grey">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="customers">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email Address</th>
+                    <th>Address</th>
+                    <th></th>
+                </tr>
+
+                <tr>
+                    <td>Adolfo Segura</td>
+                    <td>602-354-1640</td>
+                    <td>adolfosegura@ccv.church</td>
+                    <td>11883 W. Morning Vista Dr.</td>
+                    <td>
+                        <a class="btn btn-green" href="">Edit</a>
+                        <a class="btn btn-red" href="">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="info-section dark-grey">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="call-to-action">
+                <h1>Section 2</h1>
+            </div>
+        </div>
+    </div>
+</section>
