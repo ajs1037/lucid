@@ -1,4 +1,6 @@
-﻿@model List<Customer>
+﻿@using lucid.Models
+
+@model List<Customer>
 
 @{
     ViewData["Title"] = "List of Customers";
@@ -24,6 +26,9 @@
 <section class="info-section light-grey">
     <div class="row">
         <div class="col-md-12">
+            <div class="add-customer-container">
+                <a href="/Customers/Create" class="btn btn-primary">Add New</a>
+            </div>
             <table id="customers">
                 <tr>
                     <th>Name</th>
@@ -49,11 +54,6 @@
 
                 
             </table>
-
-            <div>
-                    <h1>HELLO</h1>
-                    <a asp-controller="Customers" asp-action="Create" class="btn btn-primary">Add New</a>
-                </div>
         </div>
     </div>
 </section>

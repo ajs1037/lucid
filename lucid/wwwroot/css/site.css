@@ -70,9 +70,9 @@ body {
     color: #FFFFFF;
     text-transform: uppercase;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35) !important;
-    padding: 12px 25px;
+    padding: 6px 12px;
     border-radius: 5px;
-    min-width: 200px;
+    min-width: 150px;
 }
 
 .btn-primary {
@@ -331,7 +331,7 @@ body {
 }
 
 .main-feature {
-    height: 450px;
+    height: 250px;
 }
 
 .title {
@@ -339,7 +339,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 450px;
+    height: 350px;
 }
 
     .title h1 {
