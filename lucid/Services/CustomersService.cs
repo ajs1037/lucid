@@ -25,7 +25,10 @@ namespace lucid.Services
 
         public void Delete( int id )
         {
-            throw new System.NotImplementedException();
+            var result = _context.Customers.FirstOrDefault( c => c.Id == id );
+
+            _context.Customers.Remove( result );
+            _context.SaveChanges();
         }
 
         public Customer Get( int id )
@@ -42,9 +45,11 @@ namespace lucid.Services
             return result;
         }
 
-        public Customer Update( int id, Customer customer )
+        public Customer Update( int id, Customer newCustomer )
         {
-            throw new System.NotImplementedException();
+            _context.Update( newCustomer );
+            _context.SaveChanges();
+            return newCustomer;
         }
     }
 }

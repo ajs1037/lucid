@@ -26,9 +26,9 @@
 <section class="info-section dark-grey">
     <div class="row">
         <div class="background-card">
-            <form asp-action="Create" class="form">
+            <form asp-action="Edit" class="form">
                 <div asp-validation-summary="ModelOnly"></div>
-                <h3>Add Customer</h3>
+                <h3>Update Customer</h3>
                 <div class="form-group">
                     <div class="form-item">
                         <label asp-for="FirstName" class="control-label">First Name</label>
@@ -88,7 +88,7 @@
                 </div>
 
                 <div>
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
             </form>
         </div>
