@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using lucid.Data;
 
 namespace lucid.Models
 {
-    public class Customer
+    public class Customer : IEntity
     {
         // to get rid of warnings put this: <Nullable>enable</Nullable> in .csproj file
 

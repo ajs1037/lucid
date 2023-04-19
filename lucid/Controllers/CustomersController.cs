@@ -110,7 +110,7 @@ namespace lucid.Controllers
             }
 
             _service.Delete( id );
-
+            
             return RedirectToAction( "Index" );
         }
     }

@@ -21,6 +21,7 @@ namespace lucid.Services
         public async Task AddAsync( T customer )
         {
             await _context.Set<T>().AddAsync( customer );
+            await _context.SaveChangesAsync();
         }
 
         public void Delete( int id )
@@ -29,6 +30,7 @@ namespace lucid.Services
 
             EntityEntry entityEntry = _context.Entry<T>( entity );
             entityEntry.State = EntityState.Deleted;
+            _context.SaveChanges();
         }
 
         public T Get( int id )
@@ -49,6 +51,7 @@ namespace lucid.Services
         {
             EntityEntry entityEntry = _context.Entry<T>( entity );
             entityEntry.State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }
