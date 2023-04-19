@@ -28,7 +28,7 @@ namespace lucid.Services
             throw new System.NotImplementedException();
         }
 
-        public Customer Get( string id )
+        public Customer Get( int id )
         {
             var result = _context.Customers.FirstOrDefault( c => c.Id == id );
 

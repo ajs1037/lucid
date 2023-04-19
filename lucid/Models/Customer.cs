@@ -8,7 +8,7 @@ namespace lucid.Models
         // to get rid of warnings put this: <Nullable>enable</Nullable> in .csproj file
 
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Display( Name = "First Name" )] // these are called data annotations
         [Required(ErrorMessage ="First Name is Required")]

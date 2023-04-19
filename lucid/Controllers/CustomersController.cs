@@ -44,7 +44,7 @@ namespace lucid.Controllers
         }
 
         // Get: Customers/Details/1
-        public IActionResult Details(string id)
+        public IActionResult Details(int id)
         {
             var customerDetails = _service.Get( id );
 

@@ -8,7 +8,7 @@ namespace lucid.Services
     {
         List<Customer> GetAll();
 
-        Customer Get( string id );
+        Customer Get( int id );
 
         Task AddAsync( Customer customer );
         

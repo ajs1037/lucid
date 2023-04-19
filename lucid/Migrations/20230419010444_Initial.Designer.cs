@@ -10,7 +10,7 @@ using lucid.Data;
 namespace lucid.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230419010129_Initial")]
+    [Migration("20230419010444_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,8 +23,10 @@ namespace lucid.Migrations
 
             modelBuilder.Entity("lucid.Models.Customer", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("City")
                         .IsRequired()
