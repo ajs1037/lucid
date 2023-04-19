@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using lucid.Data;
 using lucid.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace lucid.Services
 {
@@ -15,10 +17,10 @@ namespace lucid.Services
             _context = appDbContext;
         }
 
-        public void Add( Customer customer )
+        public async Task AddAsync( Customer customer )
         {
-            _context.Customers.Add( customer );
-            _context.SaveChanges();
+            await _context.Customers.AddAsync( customer );
+            await _context.SaveChangesAsync();
         }
 
         public void Delete( int id )
@@ -26,9 +28,11 @@ namespace lucid.Services
             throw new System.NotImplementedException();
         }
 
-        public Customer Get( int id )
+        public Customer Get( string id )
         {
-            throw new System.NotImplementedException();
+            var result = _context.Customers.FirstOrDefault( c => c.Id == id );
+
+            return result;
         }
 
         public List<Customer> GetAll()

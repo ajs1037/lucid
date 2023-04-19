@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using lucid.Models;
 
 namespace lucid.Services
@@ -7,9 +8,9 @@ namespace lucid.Services
     {
         List<Customer> GetAll();
 
-        Customer Get( int id );
+        Customer Get( string id );
 
-        void Add( Customer customer );
+        Task AddAsync( Customer customer );
         
         Customer Update( int id, Customer customer );
         

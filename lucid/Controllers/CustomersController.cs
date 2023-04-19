@@ -29,7 +29,7 @@ namespace lucid.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Customer customer)
+        public async Task<IActionResult> Create([Bind("PhoneNumber,EmailAddress")]Customer customer)
         {
             // this will look at the data annotions on the model and check to see if all the attributes with the "Required" data annotion
             // are not empty
@@ -39,8 +39,21 @@ namespace lucid.Controllers
                 return View(customer);
             }
 
-            _service.Add( customer );
+            await _service.AddAsync( customer );
             return RedirectToAction("Index");
+        }
+
+        // Get: Customers/Details/1
+        public IActionResult Details(string id)
+        {
+            var customerDetails = _service.Get( id );
+
+            if ( customerDetails == null)
+            {
+                return View("Empty");
+            }
+
+            return View(customerDetails);
         }
     }
 }

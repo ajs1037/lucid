@@ -1,4 +1,5 @@
 ﻿@using lucid.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers;
 
 @model List<Customer>
 
@@ -41,13 +42,14 @@
                 @foreach ( var item in Model )
                 {
                     <tr>
-                        <td>@item.FullName</td>
+                        <td>@item.FirstName + @item.LastName</td>
                         <td>@item.PhoneNumber</td>
                         <td>@item.EmailAddress</td>
                         <td>@item.Street</td>
                         <td>
-                            <a class="btn btn-green" href="">Edit</a>
-                            <a class="btn btn-red" href="">Delete</a>
+                            <a class="btn btn-green" asp-controller="Customers" asp-action="Edit" asp-route-id="@item.Id">Edit</a> <!-- anchor tag helpers not working-->
+                            <a class="btn btn-primary" asp-controller="Customers" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="btn btn-red" asp-controller="Customers" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </td>
                     </tr>
                 } 
