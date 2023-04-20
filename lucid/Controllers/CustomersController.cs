@@ -9,6 +9,7 @@ namespace lucid.Controllers
 {
     public class CustomersController : Controller
     {
+
         private readonly ICustomersService _service;
 
         public CustomersController( ICustomersService service )
@@ -31,14 +32,13 @@ namespace lucid.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Customer customer)
         {
-            // this will look at the data annotions on the model and check to see if all the attributes with the "Required" data annotion
-            // are not empty
+            // this will look at the data annotions on the model and check to see if all
+            // the attributes with the "Required" data annotion are not empty
             if ( !ModelState.IsValid )
             {
                 // pass the error back to the view
                 return View(customer);
             }
-
             await _service.AddAsync( customer );
             return RedirectToAction("Index");
         }
@@ -85,32 +85,21 @@ namespace lucid.Controllers
             return RedirectToAction( "Index" );
         }
 
-        // Get: customers/delete/1
-        public IActionResult Delete( int id )
+        [HttpPost] 
+        public void Delete( int id )
         {
-
             var customerDetails = _service.Get( id );
 
-            if ( customerDetails == null )
+            if ( customerDetails != null )
             {
-                return View( "NotFound" );
+                _service.Delete( id );
             }
-
-            return View( customerDetails );
         }
 
-        [HttpPost, ActionName("Delete")] // when you have two actions with the same signature you can use these data annotions to assign the Action Name even though the method name is DeleteConfirmed
-        public IActionResult DeleteConfirmed( int id )
+        // to delete something from the view you need to call the delete action which will call the delete post method
+        public IActionResult DeleteAction( int id)
         {
-            var customerDetails = _service.Get( id );
-
-            if ( customerDetails == null )
-            {
-                return View( "NotFound" );
-            }
-
-            _service.Delete( id );
-            
+            Delete(id);
             return RedirectToAction( "Index" );
         }
     }

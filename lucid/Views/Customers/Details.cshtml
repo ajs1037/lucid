@@ -1,4 +1,6 @@
-﻿@using lucid.Models
+﻿@using lucid.Controllers
+@using lucid.Models
+@using lucid.Services
 
 @model Customer
 
@@ -30,13 +32,11 @@
             <div class="form-group">
                 <div class="form-item">
                     <label asp-for="FirstName" class="control-label">First Name</label>
-                    <input asp-for="FirstName" class="form-control" readonly/>
-                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                    <div asp-for="FirstName"></div>
                 </div>
                 <div class="form-item">
                     <label asp-for="LastName" class="control-label">Last Name</label>
                     <input asp-for="LastName" class="form-control" readonly/>
-                    <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
                     
             </div>
@@ -44,12 +44,10 @@
                 <div class="form-item">
                     <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
                     <input asp-for="PhoneNumber" class="form-control" readonly/>
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="form-item">
                     <label asp-for="EmailAddress" class="control-label">Email Address</label>
                     <input asp-for="EmailAddress" class="form-control" readonly/>
-                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
                 </div>
                     
             </div>
@@ -57,12 +55,10 @@
                 <div class="form-item">
                     <label asp-for="Street" class="control-label">Street</label>
                     <input asp-for="Street" class="form-control" readonly/>
-                    <span asp-validation-for="Street" class="text-danger"></span>
                 </div>
                 <div class="form-item">
                     <label asp-for="City" class="control-label">City</label>
                     <input asp-for="City" class="form-control" readonly/>
-                    <span asp-validation-for="City" class="text-danger"></span>
                 </div>
                     
             </div>
@@ -70,24 +66,41 @@
                 <div class="form-item">
                     <label asp-for="State" class="control-label">State</label>
                     <input asp-for="State" class="form-control" readonly/>
-                    <span asp-validation-for="State" class="text-danger"></span>
                 </div>
                 <div class="form-item">
                     <label asp-for="Zip" class="control-label">Zip</label>
                     <input asp-for="Zip" class="form-control" readonly/>
-                    <span asp-validation-for="Zip" class="text-danger"></span>
                 </div>
                     
             </div>
             <div class="form-group notes-form-group">
                 <label asp-for="Notes" class="control-label">Notes</label>
                 <textarea asp-for="Notes" class="form-control" cols="40" rows="5" readonly></textarea>
-                <span asp-validation-for="Notes" class="text-danger"></span>
             </div>
 
             <div>
                 <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#modalDelete">Delete</a>
             </div>
         </div>
     </div>
 </section>
+
+
+
+<!-- Modals -->
+<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Confirm Delete</h4>
+                <p>Are you sure you want to delete?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-modal" data-dismiss="modal">Close</button>
+
+                <a class="btn btn-primary" href="@Url.Action("DeleteAction", "Customers", new { id = @Model.Id })">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

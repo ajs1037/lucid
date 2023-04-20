@@ -47,9 +47,8 @@
                         <td>@item.EmailAddress</td>
                         <td>@item.Street</td>
                         <td>
-                            <a class="btn btn-green" asp-controller="Customers" asp-action="Edit" asp-route-id="@item.Id">Edit</a> <!-- anchor tag helpers not working-->
                             <a class="btn btn-primary" asp-controller="Customers" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                            <a class="btn btn-red" asp-controller="Customers" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <a class="btn btn-red" href="@Url.Action("DeleteAction", "Customers", new { id = @item.Id })">Delete</a>
                         </td>
                     </tr>
                 } 

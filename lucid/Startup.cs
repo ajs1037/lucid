@@ -30,6 +30,26 @@ namespace lucid
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
 
             // services configuration
+            // 
+            // In ASP.NET MVC, services.AddScoped is used to register a service with a scoped lifetime. A service registered as
+            // scoped will be created once per HTTP request and will be shared by any component that needs it during that request.
+
+            // When you call services.AddScoped in the ConfigureServices method of your application's Startup class, you're telling the ASP.NET
+            // runtime to create an instance of the service when it's first requested during a given HTTP request. That instance will be reused by
+            // any component that needs it within the same request, but then discarded at the end of the request.
+
+            // In an ASP.NET Core application, when you register a service with the dependency injection (DI) container, you typically
+            // register it as an interface and a concrete implementation class that implements that interface. This is a common design
+            // pattern known as the Dependency Inversion Principle (DIP), which states that:
+
+            // "High-level modules should not depend on low-level modules. Both should depend on abstractions. Abstractions should not
+            // depend on details. Details should depend on abstractions."
+
+            // By registering services as interfaces and implementations, you decouple the code that depends on those services from the
+            // specific implementation details of those services. Instead, the code depends only on the abstractions( i.e., the interfaces )
+            // that define the services. This makes it easier to maintain and test your code, as you can easily swap out different
+            // implementations of a service by changing the registration of the service with the DI container.
+
             services.AddScoped<ICustomersService, CustomersService>();
 
             services.AddRazorPages();

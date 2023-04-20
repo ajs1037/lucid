@@ -391,6 +391,34 @@ body {
     background-color: #f3f3f3;
 }
 
+/* Modal Section */
+.modal-dialog {
+    margin-top: 0 !important;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-modal {
+    border: 2px solid #F3F3F3;
+    background-color: #FFFFFF;
+    width: 200px;
+}
+
+    .btn-modal:focus, .btn-modal:visited, .btn-modal:hover, .btn-modal:active {
+        text-decoration: none;
+        background-color: #a0a0a0;
+        border-color: #a0a0a0;
+        color: #FFFFFF;
+    }
+
+
+/* End Modal Section */
 
 
 /* Footer */
@@ -486,3 +514,14 @@ body {
     .footer-links-legal .legal-copyright {
         margin-left: 40px;
     }
+
+
+/* Mobile Styling */
+@media screen and (max-width: 500px) {
+    
+
+    /* Modal Section */
+    .modal-scrollable {
+        display: unset;
+    }
+}

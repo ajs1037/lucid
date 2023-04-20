@@ -10,7 +10,7 @@ namespace lucid.Services
 {
     public class GenericService<T>: IGenericService<T> where T : class, IEntity, new()
     {
-        // in every service you need to create an instance of the db context and pass it into your contructor
+        // create an instance of the db context and pass it into the contructor
         private readonly AppDbContext _context;
 
         public GenericService( AppDbContext appDbContext )

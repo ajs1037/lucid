@@ -11,6 +11,7 @@ namespace lucid.Services
     {
         public CustomersService( AppDbContext appDbContext ) : base( appDbContext )
         {
+
         }
     }
 }
