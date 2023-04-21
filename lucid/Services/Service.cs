@@ -8,14 +8,18 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace lucid.Services
 {
-    public class GenericService<T>: IGenericService<T> where T : class, IEntity, new()
+    public class Service<T>: IService<T> where T : class, IEntity, new()
     {
         // create an instance of the db context and pass it into the contructor
         private readonly AppDbContext _context;
+        internal DbSet<T> _objectSet;
 
-        public GenericService( AppDbContext appDbContext )
+        public Service( AppDbContext appDbContext )
         {
             _context = appDbContext;
+
+            // I don't know what this does but rock has it
+            _objectSet = _context.Set<T>();
         }
 
         public async Task AddAsync( T customer )

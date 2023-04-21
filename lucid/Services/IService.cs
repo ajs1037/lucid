@@ -5,7 +5,7 @@ using lucid.Models;
 
 namespace lucid.Services
 {
-    public interface IGenericService<T> where T : class, IEntity, new()
+    public interface IService<T> where T : class, IEntity, new()
     {
         List<T> GetAll();
 

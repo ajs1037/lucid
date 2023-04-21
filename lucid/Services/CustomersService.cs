@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace lucid.Services
 {
-    public class CustomersService : GenericService<Customer>, ICustomersService
+    public class CustomersService : Service<Customer>, ICustomersService
     {
         public CustomersService( AppDbContext appDbContext ) : base( appDbContext )
         {
