@@ -11,6 +11,11 @@ namespace lucid.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
+		// not needed
+        public AppDbContext()
+            : base()
+        {
+        }
 
         // Per ChatGPT: OnModelCreating is a method in Entity Framework Core that is called by the framework when it's building the model
         // for the database. The purpose of this method is to provide a way for developers to customize the model by configuring

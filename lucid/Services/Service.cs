@@ -19,7 +19,7 @@ namespace lucid.Services
             _context = appDbContext;
 
             // I don't know what this does but rock has it
-            _objectSet = _context.Set<T>();
+            //_objectSet = _context.Set<T>();
         }
 
         public async Task AddAsync( T customer )
