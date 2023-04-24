@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using lucid.Models;
+﻿using lucid.Models;
 
 namespace lucid.Services
 {
@@ -11,7 +9,7 @@ namespace lucid.Services
 
     // Here we have an interface class implementing another interface class but we do not need to define all the methods again.
     // Now ICustomersService has access to all the methods in the IGenericService.
-    public interface ICustomersService : IService<Customer>
+    public interface ITeamService : IService<Team>
     {
         
     }

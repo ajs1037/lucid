@@ -27,6 +27,16 @@ namespace lucid.Data
                 k.Id
             });
 
+            modelBuilder.Entity<Team>().HasKey( k => new
+            {
+                k.Id
+            } );
+
+            modelBuilder.Entity<Employee>().HasKey( k => new
+            {
+                k.Id
+            } );
+
             base.OnModelCreating( modelBuilder );
         }
 

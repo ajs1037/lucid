@@ -10,9 +10,9 @@ namespace lucid.Controllers
     public class CustomersController : Controller
     {
 
-        private readonly ICustomersService _service;
+        private readonly ICustomerService _service;
 
-        public CustomersController( ICustomersService service )
+        public CustomersController( ICustomerService service )
         {
             _service = service;
         }

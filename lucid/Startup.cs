@@ -50,7 +50,9 @@ namespace lucid
             // that define the services. This makes it easier to maintain and test your code, as you can easily swap out different
             // implementations of a service by changing the registration of the service with the DI container.
 
-            services.AddScoped<ICustomersService, CustomersService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<ITeamService, TeamService>();
 
             services.AddRazorPages();
         }
