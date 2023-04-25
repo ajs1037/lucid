@@ -27,21 +27,20 @@ namespace lucid.Data
             //    k.Id
             //});
 
-            //modelBuilder.Entity<Employee>().HasKey( t => new
-            //{
-            //    t.Id,
-            //    t.TeamId
-            //} );
+            modelBuilder.Entity<Employee>().HasKey( t => new
+            {
+                t.Id
+            } );
 
-            //modelBuilder.Entity<Team>().HasKey( k => new
-            //{
-            //    k.Id
-            //} );
+            modelBuilder.Entity<Team>().HasKey( k => new
+            {
+                k.Id
+            } );
 
             //// an employee has one team
-            //modelBuilder.Entity<Employee>().HasOne( a => a.Team );
+            modelBuilder.Entity<Employee>().HasOne( a => a.Team );
 
-            //modelBuilder.Entity<Team>().HasMany( a => a.Employees );
+            modelBuilder.Entity<Team>().HasMany( a => a.Employees );
 
             base.OnModelCreating( modelBuilder );
         }
