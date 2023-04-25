@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using lucid.Data;
 
@@ -18,5 +19,7 @@ namespace lucid.Models
         public DateTime CreatedDateTime { get; set; }
 
         public DateTime ModifiedDateTIme { get; set; }
+
+        public List<Employee> Employees { get; set; }
     }
 }

@@ -1,20 +1,68 @@
-﻿
+﻿@using lucid.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers;
+
+@model List<Team>
+
 @{
-    ViewBag.Title = "Teams";
+    ViewData["Title"] = "List of Teams";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-@{
-    ViewData["Title"] = "Teams";
+@section styles {
+    <link rel="stylesheet" href="@ViewData["AssetHost"]/css/customers.css" type="text/css" asp-append-version="true" />
 }
 
-<h1 style="color:gray">Teams Index Page</h1>
-<h1 style="color:gray">Teams Index Page</h1>
-<h1 style="color:gray">Teams Index Page</h1>
-<h1 style="color:gray">Teams Index Page</h1>
-<h1 style="color:gray">Teams Index Page</h1>
-<h1 style="color:gray">Teams Index Page</h1>
-<h1 style="color:gray">Teams Index Page</h1>
-<h1 style="color:gray">Teams Index Page</h1>
-<h1 style="color:gray">Teams Index Page</h1>
+<section id="hero" class="main-feature">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h1>Teams List</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="info-section light-grey">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="add-customer-container">
+                <a href="/Teams/Create" class="btn btn-primary">Add New</a>
+            </div>
+            <table id="customers">
+                <tr>
+                    <th>Name</th>
+                    <th>Team Lead</th>
+                    <th>Team Driver</th>
+                    <th></th>
+                </tr>
+
+                @foreach ( var item in Model )
+                {
+                    <tr>
+                        <td>@item.TeamName</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a class="btn btn-primary" asp-controller="Teams" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="btn btn-red" href="@Url.Action("DeleteAction", "Teams", new { id = @item.Id })">Delete</a>
+                        </td>
+                    </tr>
+                } 
+
+                
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="info-section dark-grey">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="call-to-action">
+                <h1>Section 2</h1>
+            </div>
+        </div>
+    </div>
+</section>

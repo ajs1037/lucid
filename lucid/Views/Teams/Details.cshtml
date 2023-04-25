@@ -1,0 +1,63 @@
+﻿@using lucid.Controllers
+@using lucid.Models
+@using lucid.Services
+
+@model Team
+
+@{
+    ViewData["Title"] = "Team Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    <link rel="stylesheet" href="@ViewData["AssetHost"]/css/details.css" type="text/css" asp-append-version="true" />
+}
+
+<section id="hero" class="main-feature">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h1></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="info-section dark-grey">
+    <div class="row">
+        <div class="background-card">
+            <h3>Edit Team</h3>
+
+            <h5>Name</h5>
+            <p>@Model.TeamName</p>
+            <p>@Model.TeamLeaderEmployeeId</p>
+            <p>@Model.TeamDriverEmployeeId</p>
+
+            <div>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#modalDelete">Delete</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Modals -->
+<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Confirm Delete</h4>
+                <p>Are you sure you want to delete?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-modal" data-dismiss="modal">Close</button>
+
+                <a class="btn btn-primary" href="@Url.Action("DeleteAction", "Teams", new { id = @Model.Id })">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

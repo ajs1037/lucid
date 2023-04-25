@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using lucid.Data;
 
 namespace lucid.Models
@@ -10,7 +11,7 @@ namespace lucid.Models
         public int Id { get; set; }
 
         [Display( Name = "First Name" )] // these are called data annotations
-        [Required(ErrorMessage ="First Name is Required")]
+        [Required( ErrorMessage = "First Name is Required" )]
         public string FirstName { get; set; }
 
         [Display( Name = "Last Name" )] // these are called data annotations
@@ -23,10 +24,15 @@ namespace lucid.Models
 
         public string EmailAddress { get; set; }
 
-        public int TeamId { get; set; }
-
         public DateTime CreatedDateTime { get; set; }
 
         public DateTime ModifiedDateTIme { get; set; }
+
+
+        // relationship
+        public int TeamId { get; set; }
+
+        [ForeignKey( "TeamId" )]
+        public Team Team { get; set; }
     }
 }

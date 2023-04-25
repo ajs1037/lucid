@@ -22,25 +22,46 @@ namespace lucid.Data
         // entity mappings, relationships, constraints, and other database-specific settings.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>().HasKey( k => new
-            {
-                k.Id
-            });
+            //modelBuilder.Entity<Customer>().HasKey( k => new
+            //{
+            //    k.Id
+            //});
 
-            modelBuilder.Entity<Team>().HasKey( k => new
-            {
-                k.Id
-            } );
+            //modelBuilder.Entity<Employee>().HasKey( t => new
+            //{
+            //    t.Id,
+            //    t.TeamId
+            //} );
 
-            modelBuilder.Entity<Employee>().HasKey( k => new
-            {
-                k.Id
-            } );
+            //modelBuilder.Entity<Team>().HasKey( k => new
+            //{
+            //    k.Id
+            //} );
+
+            //// an employee has one team
+            //modelBuilder.Entity<Employee>().HasOne( a => a.Team );
+
+            //modelBuilder.Entity<Team>().HasMany( a => a.Employees );
 
             base.OnModelCreating( modelBuilder );
         }
 
         // define the table names for the models
         public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Team> Team { get; set; }
+
+        public DbSet<Employee> Employee { get; set; }
     }
 }
+
+
+/*
+ * 
+ * migration commands:
+ * 
+ * Add-Migration migration_name : this will create new tables once you specifiy the new models and entity relationships in the appdbcontext.cs file
+ * Update-Database : if you make changes to a migration file, run this command to update the tables
+ * 
+ * 
+ */

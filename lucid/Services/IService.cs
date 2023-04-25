@@ -11,9 +11,9 @@ namespace lucid.Services
 
         T Get( int id );
 
-        Task AddAsync( T customer );
+        Task AddAsync( T model );
         
-        void Update( int id, T customer );
+        void Update( int id, T model );
         
         void Delete( int id );
     }
