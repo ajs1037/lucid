@@ -32,7 +32,7 @@ namespace lucid.Models
         // relationship
         public int TeamId { get; set; }
 
-        [ForeignKey( "TeamId" )]
+        //[ForeignKey( "TeamId" )]
         public Team Team { get; set; }
     }
 }
