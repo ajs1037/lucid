@@ -22,10 +22,10 @@ namespace lucid.Data
         // entity mappings, relationships, constraints, and other database-specific settings.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Customer>().HasKey( k => new
-            //{
-            //    k.Id
-            //});
+            modelBuilder.Entity<Customer>().HasKey( k => new
+            {
+                k.Id
+            } );
 
             modelBuilder.Entity<Employee>().HasKey( t => new
             {
