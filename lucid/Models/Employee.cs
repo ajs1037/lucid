@@ -28,11 +28,7 @@ namespace lucid.Models
 
         public DateTime ModifiedDateTIme { get; set; }
 
-
         // relationship
         public int TeamId { get; set; }
-
-        //[ForeignKey( "TeamId" )]
-        public Team Team { get; set; }
     }
 }

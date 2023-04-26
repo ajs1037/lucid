@@ -38,15 +38,15 @@ namespace lucid.Data
             } );
 
             //// an employee has one team
-            modelBuilder.Entity<Employee>().HasOne( a => a.Team );
+            //modelBuilder.Entity<Employee>().HasOne( a => a.Team );
 
-            modelBuilder.Entity<Team>().HasMany( a => a.Employees );
+            //modelBuilder.Entity<Team>().HasMany( a => a.Employees );
 
             base.OnModelCreating( modelBuilder );
         }
 
         // define the table names for the models
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customer { get; set; }
 
         public DbSet<Team> Team { get; set; }
 

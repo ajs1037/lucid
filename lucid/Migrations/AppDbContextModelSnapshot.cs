@@ -142,13 +142,11 @@ namespace lucid.Migrations
 
             modelBuilder.Entity("lucid.Models.Employee", b =>
                 {
-                    b.HasOne("lucid.Models.Team", "Team")
+                    b.HasOne("lucid.Models.Team", null)
                         .WithMany("Employees")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("lucid.Models.Team", b =>

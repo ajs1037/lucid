@@ -10,7 +10,7 @@ using lucid.Data;
 namespace lucid.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230425212657_Initial")]
+    [Migration("20230425215036_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -144,13 +144,11 @@ namespace lucid.Migrations
 
             modelBuilder.Entity("lucid.Models.Employee", b =>
                 {
-                    b.HasOne("lucid.Models.Team", "Team")
+                    b.HasOne("lucid.Models.Team", null)
                         .WithMany("Employees")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("lucid.Models.Team", b =>
