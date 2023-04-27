@@ -32,6 +32,7 @@
             </div>
             <table id="customers">
                 <tr>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Team Lead</th>
                     <th>Team Driver</th>
@@ -41,6 +42,7 @@
                 @foreach ( var item in Model )
                 {
                     <tr>
+                        <td>@item.Id</td>
                         <td>@item.TeamName</td>
                         <td></td>
                         <td></td>
