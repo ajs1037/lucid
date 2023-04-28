@@ -34,6 +34,7 @@
             <p>@Model.FirstName @Model.LastName</p>
             <p>@Model.PhoneNumber</p>
             <p>@Model.EmailAddress</p>
+            <p>@Model.TeamId</p>
 
             <div>
                 <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
@@ -46,7 +47,7 @@
 
 
 <!-- Modals -->
-<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modalDelete" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -54,10 +55,22 @@
                 <p>Are you sure you want to delete?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-modal" data-dismiss="modal">Close</button>
+                <a class="btn btn-primary" id="btnHideModal">Close</a>
 
                 <a class="btn btn-primary" href="@Url.Action("DeleteAction", "Employees", new { id = @Model.Id })">Delete</a>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">  
+    $(document).ready(function () {  
+        $("#btnShowModal").click(function () {  
+            $("#modalDelete").modal('show');  
+        });  
+  
+        $("#btnHideModal").click(function () {  
+            $("#modalDelete").modal('hide');  
+        });  
+    });  
+</script> v>

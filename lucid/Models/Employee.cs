@@ -26,9 +26,10 @@ namespace lucid.Models
 
         public DateTime CreatedDateTime { get; set; }
 
-        public DateTime ModifiedDateTIme { get; set; }
+        public DateTime ModifiedDateTime { get; set; }
 
         // relationship
-        public int TeamId { get; set; }
+        public Team team { get; set; }
+        public int? TeamId { get; set; }
     }
 }

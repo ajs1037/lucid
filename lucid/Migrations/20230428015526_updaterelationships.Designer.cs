@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using lucid.Data;
 
 namespace lucid.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230428015526_updaterelationships")]
+    partial class updaterelationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,11 +144,9 @@ namespace lucid.Migrations
 
             modelBuilder.Entity("lucid.Models.Employee", b =>
                 {
-                    b.HasOne("lucid.Models.Team", "team")
+                    b.HasOne("lucid.Models.Team", null)
                         .WithMany("Employees")
                         .HasForeignKey("TeamId");
-
-                    b.Navigation("team");
                 });
 
             modelBuilder.Entity("lucid.Models.Team", b =>

@@ -10,6 +10,7 @@ namespace lucid.Models
         [Key]
         public int Id { get; set; }
 
+        [Required( ErrorMessage = "Team Name is Required" )]
         public string TeamName { get; set; }
 
         public string TeamLeaderEmployeeId { get; set; }
@@ -18,7 +19,7 @@ namespace lucid.Models
 
         public DateTime CreatedDateTime { get; set; }
 
-        public DateTime ModifiedDateTIme { get; set; }
+        public DateTime ModifiedDateTime { get; set; }
 
         public List<Employee> Employees { get; set; }
     }

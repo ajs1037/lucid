@@ -5,6 +5,10 @@
 @{
     ViewData["Title"] = "Add a New team";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    // get list of employees and the team model from ViewData
+    IEnumerable<Employee> employees = ViewData["Employees"] as IEnumerable<Employee>;
+    Team teamModel = ViewData["TeamModel"] as Team;
 }
 
 @section styles {
@@ -26,40 +30,31 @@
 <section class="info-section dark-grey">
     <div class="row">
         <div class="background-card">
-            <form asp-action="Edit" class="form">
-                <div asp-validation-summary="ModelOnly"></div>
+            @using (Html.BeginForm("Edit", "Teams", FormMethod.Post))
+            {
                 <h3>Update team</h3>
                 <div class="form-group">
                     <div class="form-item">
-                        <label asp-for="TeamName" class="control-label">First Name</label>
-                        <input asp-for="TeamName" class="form-control" />
-                        <span asp-validation-for="TeamName" class="text-danger"></span>
+                        @Html.TextBoxFor(m => teamModel.TeamName, new { @class = "form-control", @placeholder = "Team Name" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="form-item">
-                        <label asp-for="TeamDriverEmployeeId" class="control-label">Team Driver</label>
-                        <input asp-for="TeamDriverEmployeeId" class="form-control" />
-                        <span asp-validation-for="TeamDriverEmployeeId" class="text-danger"></span>
+                        <h5>Team Driver</h5>
+                        @Html.TextBoxFor(m => teamModel.TeamDriverEmployeeId)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="form-item">
-                        <label asp-for="TeamLeaderEmployeeId" class="control-label">Team Leader</label>
-                        <input asp-for="TeamLeaderEmployeeId" class="form-control" />
-                        <span asp-validation-for="TeamLeaderEmployeeId" class="text-danger"></span>
+                        <h5>Team Leader</h5>
+                        @Html.TextBoxFor(m => teamModel.TeamLeaderEmployeeId)
                     </div>
                 </div>
 
-
-
-
-                <div>
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            }
         </div>
     </div>
 </section>

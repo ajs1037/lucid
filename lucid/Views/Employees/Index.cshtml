@@ -35,6 +35,7 @@
                     <th>Name</th>
                     <th>Email Address</th>
                     <th>Phone Number</th>
+                    <th>Team Id</th>
                     <th></th>
                 </tr>
 
@@ -44,9 +45,10 @@
                         <td>@item.FirstName @item.LastName</td>
                         <td>@item.EmailAddress</td>
                         <td>@item.PhoneNumber</td>
+                        <td>@item.TeamId</td>
                         <td>
                             <a class="btn btn-primary" asp-controller="Employees" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                            <a class="btn btn-red" href="@Url.Action("DeleteAction", "Employees", new { id = @item.Id })">Delete</a>
+                         @*   <a class="btn btn-red" href="@Url.Action("DeleteAction", "Employees", new { id = @item.Id })">Delete</a>*@
                         </td>
                     </tr>
                 } 

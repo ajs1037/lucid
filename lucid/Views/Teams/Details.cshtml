@@ -2,11 +2,14 @@
 @using lucid.Models
 @using lucid.Services
 
-@model Team
 
 @{
     ViewData["Title"] = "Team Details";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    // get list of employees and the team model from ViewData
+    IEnumerable<Employee> employees = ViewData["Employees"] as IEnumerable<Employee>;
+    Team teamModel = ViewData["TeamModel"] as Team;
 }
 
 @section styles {
@@ -30,18 +33,25 @@
         <div class="background-card">
             <h3>Team Information</h3>
 
+            
+
             <h5>Name</h5>
-            <p>@Model.TeamName</p>
+            @foreach (Employee employee in employees)
+            {
+                 <p>@employee.FirstName @employee.LastName</p>
+            }
+            <p>@teamModel.TeamName</p>
 
             <h5>Team Lead</h5>
-            <p>@Model.TeamLeaderEmployeeId</p>
+            <p>@teamModel.TeamLeaderEmployeeId</p>
 
+            
             <h5>Team Driver</h5>
-            <p>@Model.TeamDriverEmployeeId</p>
+            <p>@teamModel.TeamDriverEmployeeId</p>
 
             <div>
-                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-                <a class="btn btn-primary" data-toggle="modal" data-target="#modalDelete">Delete</a>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@teamModel.Id">Edit</a>
+                <a class="btn btn-primary" id="btnShowModal" data-toggle="modal" data-target="#modalDelete">Delete</a>
             </div>
         </div>
     </div>
@@ -50,7 +60,7 @@
 
 
 <!-- Modals -->
-<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modalDelete" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,10 +68,22 @@
                 <p>Are you sure you want to delete?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-modal" data-dismiss="modal">Close</button>
+                <a class="btn btn-primary" id="btnHideModal">Close</a>
 
-                <a class="btn btn-primary" href="@Url.Action("DeleteAction", "Teams", new { id = @Model.Id })">Delete</a>
+                <a class="btn btn-primary" href="@Url.Action("DeleteAction", "Teams", new { id = @teamModel.Id })">Delete</a>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">  
+    $(document).ready(function () {  
+        $("#btnShowModal").click(function () {  
+            $("#modalDelete").modal('show');  
+        });  
+  
+        $("#btnHideModal").click(function () {  
+            $("#modalDelete").modal('hide');  
+        });  
+    });  
+</script> 

@@ -10,16 +10,19 @@ namespace lucid.Controllers
     public class TeamsController : Controller
     {
 
-        private readonly ITeamService _service;
+        private readonly ITeamService _teamService;
+        private readonly IEmployeeService _employeeService;
 
-        public TeamsController( ITeamService service )
+        public TeamsController( ITeamService teamService, IEmployeeService employeeService )
         {
-            _service = service;
+            _teamService = teamService;
+            _employeeService = employeeService;
         }
+
         public IActionResult Index()
         {
             // when we have data manipulation we should use asyc
-            var data = _service.GetAll();
+            var data = _teamService.GetAll();
             return View( data );
         }
 
@@ -39,35 +42,42 @@ namespace lucid.Controllers
                 // pass the error back to the view
                 return View( team );
             }
-            await _service.AddAsync( team );
+            await _teamService.AddAsync( team );
             return RedirectToAction( "Index" );
         }
 
         // Get: Teams/Details/1
         public IActionResult Details( int id )
         {
-            var teamDetails = _service.Get( id );
+            var allEmployees = _employeeService.GetAll();
+            var teamDetails = _teamService.Get( id );
 
             if ( teamDetails == null )
             {
                 return View( "NotFound" );
             }
 
-            return View( teamDetails );
+            ViewData["TeamModel"] = teamDetails;
+            ViewData["Employees"] = allEmployees;
+
+            return View( );
         }
 
         // Get: teams/edit/1
         public IActionResult Edit( int id )
         {
-
-            var teamDetails = _service.Get( id );
+            var allEmployees = _employeeService.GetAll();
+            var teamDetails = _teamService.Get( id );
 
             if ( teamDetails == null )
             {
                 return View( "NotFound" );
             }
 
-            return View( teamDetails );
+            ViewData["TeamModel"] = teamDetails;
+            ViewData["Employees"] = allEmployees;
+
+            return View();
         }
 
         [HttpPost]
@@ -81,18 +91,18 @@ namespace lucid.Controllers
                 return View( team );
             }
 
-            _service.Update( id, team );
+            _teamService.Update( id, team );
             return RedirectToAction( "Index" );
         }
 
         [HttpPost]
         public void Delete( int id )
         {
-            var teamDetails = _service.Get( id );
+            var teamDetails = _teamService.Get( id );
 
             if ( teamDetails != null )
             {
-                _service.Delete( id );
+                _teamService.Delete( id );
             }
         }
 

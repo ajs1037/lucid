@@ -48,7 +48,7 @@
                         <td>@item.Street</td>
                         <td>
                             <a class="btn btn-primary" asp-controller="Customers" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                            <a class="btn btn-red" href="@Url.Action("DeleteAction", "Customers", new { id = @item.Id })">Delete</a>
+                           @*<a class="btn btn-red" href="@Url.Action("DeleteAction", "Customers", new { id = @item.Id })">Delete</a>*@
                         </td>
                     </tr>
                 } 

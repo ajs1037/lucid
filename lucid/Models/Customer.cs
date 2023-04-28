@@ -46,6 +46,6 @@ namespace lucid.Models
 
         public DateTime CreatedDateTime { get; set; }
 
-        public DateTime ModifiedDateTIme { get; set; }
+        public DateTime ModifiedDateTime { get; set; }
     }
 }

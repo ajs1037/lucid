@@ -31,6 +31,8 @@ namespace lucid
 
             // services configuration
             // 
+            // PER CHAT GPT
+
             // In ASP.NET MVC, services.AddScoped is used to register a service with a scoped lifetime. A service registered as
             // scoped will be created once per HTTP request and will be shared by any component that needs it during that request.
 
