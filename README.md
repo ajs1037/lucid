@@ -1,1 +1,1 @@
-MVC .Net Core Project. Just for fun. :) 
+MVC .Net Core Customer Management System. Just for fun. :) 
